@@ -47,3 +47,19 @@ This Repo contains the southern hen code and the point table needed for all prog
  ![alt text](image.png)[size=.20]
  - Click save and then the check mark at the top
  - Now you're good to go!
+
+## Step 5: Indexing the program
+### Right Robot (Palletizes to the RIGHT of its tower when facing the conveyer)
+- Open one of the "RtMaster" programs
+- Move the robot arm such that the vacuum gripper is flat on the conveyer centered on where the box will end up
+- Save that point as "RtBaseGrab" (or whatever the name of the grab point is in it's program)
+- Move the gripper flat to the BACK INSIDE CORNER of the pallet (the first drop position)
+- Save that point as RtPalletBIC (or whatever I named it)
+
+### Left Robot (Palletizes to the LEFT of its tower when facing the conveyer)
+- Open one of the "LeftMaster" programs
+- Move the robot arm such that the vacuum gripper is flat on the conveyer centered on where the box will end up
+- Save that point as "LeftBaseGrab" (or whatever the name of the grab point is in it's program)
+- Move the gripper flat AT THE HEIGHT OF YOUR BOX to the BACK INSIDE CORNER of the pallet (the first drop position)
+    - The left side does not have the reach to be flat on the ground so it needs to start at the height of your box
+- Save that point as LeftPalletBIC (or whatever I named it)
