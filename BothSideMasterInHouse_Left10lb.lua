@@ -10,9 +10,9 @@ WaitMs(1000)
 SetAuxDO(5,1,0,0) -- Disengage rail break
 -- Temp Vars for small boxes in office
 
-l = 385 --Length of box
-w = 325 -- Width of box
-h = 320 -- Height of box
+l = 445 --Length of 10lb box
+w = 248 -- Width of 10lb box
+h = 115 -- Height of 10lb box
 -- Loop vars
 col = 1 --Collumn counter for loop (INDEX AT 1)
 row = 1 --Row counter for loop (INDEX AT 1)
@@ -35,10 +35,11 @@ RIGHT = 2
 -- Forever do...
 while(1) do
     while(side == LEFT) do
-        SetAuxDO(0,0,0,0) -- Green channel
-        SetAuxDO(1,1,0,0) -- YellowChannel
-        SetAuxDO(2,0,0,0) -- Red channel
         WaitMs(1000)
+        -- if (get_pallet_reset_di == 1) then 
+            -- SetAuxDO(0,1,0,0) -- Green channel
+            -- SetAuxDO(1,0,0,0) -- YellowChannel
+            -- SetAuxDO(2,0,0,0) -- Red channel
         -- Wait for go signal (either sensor or GoSignal from Master)
         if(GetDI(5, 0) == 1 or GetDI(5,0) == 0) then -- This needs to be "if(box detected and other robot is ready)"
             SetAuxDO(0,0,0,0)
@@ -95,9 +96,9 @@ while(1) do
                 WaitMs(300) -- Wait to ensure vacuum is released
             end
             -- Adjust loop values
-            if(row % max_row == 0) then
+            if(row == max_row) then
                 row = 1
-                if(col % max_col == 0) then
+                if(col == max_col) then
                     col = 1
                     layer = layer + 1
                     if(layer == max_layer_low)then
@@ -125,6 +126,9 @@ while(1) do
                 side = RIGHT
                 EXT_AXIS_PTP(1,LeftPrepRailLow,100)
                 PTP(LeftPrepRailLow,100,0,0)
+                SetAuxDO(0,0,0,0) -- Green channel
+                SetAuxDO(1,1,0,0) -- YellowChannel
+                SetAuxDO(2,0,0,0) -- Red channel
             end
             -- TO DO HERE: Read GO sensor from either sensor or Master
             -- If GO sensor is high: go straight to pickup W veLeftical offset
@@ -140,6 +144,10 @@ while(1) do
     layer = 0 -- Which layer you're building (FIRST LAYER IS 0)
 
     while(side == RIGHT) do
+        -- if(get_pallet_reset == 1) then 
+            -- SetAuxDO(0,1,0,0) -- Green channel
+            -- SetAuxDO(1,0,0,0) -- YellowChannel
+            -- SetAuxDO(2,0,0,0) -- Red channel
         -- Wait for go signal (either sensor or DO from Master)
         if(GetDI(5, 0) == 1 or GetDI(5,0) == 0) then
             -- Move to hover pose
@@ -195,9 +203,9 @@ while(1) do
                 WaitMs(300) -- Wait to ensure vacuum is released
             end
             -- Adjust loop values
-            if(row % max_row == 0) then
+            if(row == max_row) then
                 row = 1
-                if(col % max_col == 0) then
+                if(col == max_col) then
                     col = 1
                     layer = layer + 1
                     if(layer == max_layer_low)then
@@ -229,6 +237,9 @@ while(1) do
                 layer = 0
                 col = 1
                 row = 1
+                SetAuxDO(0,0,0,0) -- Green channel
+                SetAuxDO(1,1,0,0) -- YellowChannel
+                SetAuxDO(2,0,0,0) -- Red channel
             end
         end
     end

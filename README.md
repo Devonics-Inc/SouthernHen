@@ -50,11 +50,16 @@ This Repo contains the southern hen code and the point table needed for all prog
 
 ## Step 5: Indexing the program
 ### Right Robot (Palletizes to the RIGHT of its tower when facing the conveyer)
-- Open one of the "RtMaster" programs
+- Copy the Palletizing file for your selected box size (10lb or  20lb).
 - Move the robot arm such that the vacuum gripper is flat on the conveyer centered on where the box will end up
-- Save that point as "RtBaseGrab" (or whatever the name of the grab point is in it's program)
+- Save that point as "BaseGrabRail___" (or whatever the name of the grab point is in it's program)
+- Set the same point with the rail at 0, 100, and 200 for BaseGrabRailLow, BaseGrabRailMid, and BaseGrabRailHigh respectively
 - Move the gripper flat to the BACK INSIDE CORNER of the pallet (the first drop position)
-- Save that point as RtPalletBIC (or whatever I named it)
+- Save that point as RtPalletBICRail____ (or whatever I named it).
+- For each rail height, set the gripper to be flat on a box at the height of the first box on that layer
+    - Ex: If I have 9 total layers, Id set RtBICRailLow to the height of one box, RtBICRailMid to the height of 4 boxes, and RtBICRailHigh to the height of 7 boxes.
+- Repeat this process for each side's Prep, MidPt, Grab, and BIC
+- Note: You will have to make a copy of each point for each box size (ie RtBICRailLow10lb) since the grab positions will be different for each box
 
 ### Left Robot (Palletizes to the LEFT of its tower when facing the conveyer)
 - Open one of the "LeftMaster" programs

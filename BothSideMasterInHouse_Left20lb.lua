@@ -10,9 +10,9 @@ WaitMs(1000)
 SetAuxDO(5,1,0,0) -- Disengage rail break
 -- Temp Vars for small boxes in office
 
-l = 385 --Length of box
-w = 325 -- Width of box
-h = 320 -- Height of box
+l = 401 --Length of 20lb box
+w = 510 -- Width of 20lb box
+h = 241 -- Height of 20lb box
 -- Loop vars
 col = 1 --Collumn counter for loop (INDEX AT 1)
 row = 1 --Row counter for loop (INDEX AT 1)
@@ -40,6 +40,10 @@ while(1) do
         SetAuxDO(2,0,0,0) -- Red channel
         WaitMs(1000)
         -- Wait for go signal (either sensor or GoSignal from Master)
+        -- if (get_pallet_reset_di == 1) then 
+            -- SetAuxDO(0,1,0,0) -- Green channel
+            -- SetAuxDO(1,0,0,0) -- YellowChannel
+            -- SetAuxDO(2,0,0,0) -- Red channel
         if(GetDI(5, 0) == 1 or GetDI(5,0) == 0) then -- This needs to be "if(box detected and other robot is ready)"
             SetAuxDO(0,0,0,0)
             SetAuxDO(1,0,0,0)
@@ -141,6 +145,10 @@ while(1) do
 
     while(side == RIGHT) do
         -- Wait for go signal (either sensor or DO from Master)
+        -- if (get_pallet_reset_di == 1) then 
+            -- SetAuxDO(0,1,0,0) -- Green channel
+            -- SetAuxDO(1,0,0,0) -- YellowChannel
+            -- SetAuxDO(2,0,0,0) -- Red channel
         if(GetDI(5, 0) == 1 or GetDI(5,0) == 0) then
             -- Move to hover pose
             if(layer < max_layer_low) then
@@ -195,9 +203,9 @@ while(1) do
                 WaitMs(300) -- Wait to ensure vacuum is released
             end
             -- Adjust loop values
-            if(row % max_row == 0) then
+            if(row == max_row) then
                 row = 1
-                if(col % max_col == 0) then
+                if(col == max_col) then
                     col = 1
                     layer = layer + 1
                     if(layer == max_layer_low)then
