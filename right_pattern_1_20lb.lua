@@ -34,7 +34,7 @@ while(1) do
     -- Either put the go signal for the slave here...
     -- SetDO(SlaveGo, 1, 0, 0)
     if(box_num < 6) then
-        rot_offset = 90
+        rot_offset = -90
         x_offset = -1 * ((l - w) / 2)
         y_offset = (w * (box_num - 1)) - ((l - w) / 2)
     else 
