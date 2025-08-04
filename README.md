@@ -24,6 +24,15 @@ This Repo contains the southern hen code and the point table needed for all prog
 - Connect input wires 1 and 2 of the grippern to the control box's DO 2 and 3 respectively
 
 ## Step 4: Setting up rail params
+ - YOU MUST CONFIGURE THE EXT AXIS BEFORE CONNECTING!!!
+ - Click configure, load, and then save (the checkmark at the top)
+ - Navigate to "Initial"->"Base"->"Coordinate"->"Ext. Axis"
+ - Select extaxis1
+ - Click edit, select "param config" and enter the following values: 
+ ![alt text](image.png)[size=.20]
+ - Click save and then the check mark at the top
+
+
  - The provided code should have the propper UDP set up, but you'll need to give it the values the first time you set it up. Screen shots of the correct parameters can be found in this repo.
  - In "Initial"->"Peripheral"->"Ext. Axis" select Ext. Axis + UDP.
  - Change exaxis number to 1
@@ -40,12 +49,7 @@ This Repo contains the southern hen code and the point table needed for all prog
     - Number of reconnections: 5
     - Position completion time: 1000ms
 
- - Click configure, load, and then save (the checkmark at the top)
- - Navigate to "Initial"->"Base"->"Coordinate"->"Ext. Axis"
- - Select extaxis1
- - Click edit, select "param config" and enter the following values: 
- ![alt text](image.png)[size=.20]
- - Click save and then the check mark at the top
+
  - Now you're good to go!
 
 ## Step 5: Indexing the program
